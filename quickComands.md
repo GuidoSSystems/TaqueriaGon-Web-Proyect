@@ -1,4 +1,4 @@
-# 🌮 Taquería Gon Web - Developer Cheat Sheet 🚀
+#  Taquería Gon Web - Developer Cheat Sheet 
 
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
@@ -9,7 +9,7 @@ Welcome to the quick reference guide for the **Taquería Gon** development team.
 
 ---
 
-## 🌿 1. Version Control (Git & Gitflow)
+##  1. Version Control (Git & Gitflow)
 
 | Command | Description |
 | :--- | :--- |
@@ -23,11 +23,11 @@ Welcome to the quick reference guide for the **Taquería Gon** development team.
 | `git branch` | List all existing branches on your local machine. |
 | `git branch -m <new-name>` | Rename your current local branch. |
 
-> 💡 **Workflow Tip:** Never write code directly in the `Development` or `main` branches. Always create a new `feature/` branch before modifying any files!
+>  **Workflow Tip:** Never write code directly in the `Development` or `main` branches. Always create a new `feature/` branch before modifying any files!
 
 ---
 
-## 🐳 2. Infrastructure (Docker)
+##  2. Infrastructure (Docker)
 
 | Command | Description |
 | :--- | :--- |
@@ -37,7 +37,7 @@ Welcome to the quick reference guide for the **Taquería Gon** development team.
 
 ---
 
-## 📦 3. Package Management (Node.js & NPM)
+##  3. Package Management (Node.js & NPM)
 
 | Command | Description |
 | :--- | :--- |
@@ -47,4 +47,4 @@ Welcome to the quick reference guide for the **Taquería Gon** development team.
 | `npm run dev` | Execute our custom script to start the local server with auto-reload enabled. |
 
 ---
-*Happy coding! 💻✨*
+*Happy coding! *
