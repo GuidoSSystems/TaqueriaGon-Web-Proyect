@@ -1,0 +1,31 @@
+services:
+  # node js configuration
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app # sincronize the code in real time
+      - /app/node_modules # prevent conflicts on the local folders
+    environment:
+      - DB_HOST=basededatos
+      - DB_USER=root
+      - DB_PASSWORD=taqueria_secreta
+      - DB_NAME=taqueriadb
+    depends_on:
+      - basededatos
+
+  # data base configuration
+  basededatos:
+    image: mysql:8.0
+    ports:
+      - "3307:3307"
+    environment:
+      - MYSQL_ROOT_PASSWORD=taqueria_secreta
+      - MYSQL_DATABASE=taqueriadb
+    volumes:
+      - db_data:/var/lib/mysql # for save the data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql # read the initial tables
+
+volumes:
+  db_data:
