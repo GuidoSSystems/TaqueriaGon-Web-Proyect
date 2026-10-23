@@ -5,13 +5,13 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app # sincronize the code in real time
-      - /app/node_modules # prevent conflicts on the local folders
+      - .:/app 
+      - /app/node_modules 
     environment:
-      - DB_HOST=basededatos
-      - DB_USER=root
-      - DB_PASSWORD=taqueria_secreta
-      - DB_NAME=taqueriadb
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
     depends_on:
       - basededatos
 
@@ -19,13 +19,13 @@ services:
   basededatos:
     image: mysql:8.0
     ports:
-      - "3307:3307"
+      - "3307:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=taqueria_secreta
-      - MYSQL_DATABASE=taqueriadb
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
     volumes:
-      - db_data:/var/lib/mysql # for save the data
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql # read the initial tables
+      - db_data:/var/lib/mysql 
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql 
 
 volumes:
   db_data:
