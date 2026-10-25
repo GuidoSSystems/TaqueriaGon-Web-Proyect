@@ -1,6 +1,6 @@
 const productosPrueba = [
-    { nombre: 'Tacos', categoria: 'Antojito', precio: 20, stock: 0, controla_stock: 0, disponible: 1 },
-    { nombre: 'Hamburguesa', categoria: 'Snack', precio: 70, stock: 10, controla_stock: 1, disponible: 1 }
+    { nombre: 'Tacos', categoria: 'Platillo', precio: 20, stock: 0, controla_stock: 0, disponible: 1 },
+    { nombre: 'Hamburguesa', categoria: 'Platillo', precio: 70, stock: 10, controla_stock: 1, disponible: 1 }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,6 +65,28 @@ function renderizarTabla(productos) {
         checkDisponible.type = 'checkbox';
         checkDisponible.checked = producto.disponible === 1;
         celdaDisponible.appendChild(checkDisponible);
+
+        //funcion para bloquear campos y pintar la fila en caso de no estar disponible
+        function alternarEstadoFila(estaDsiponible) {
+            if (!estaDsiponible) {
+                fila.style.backgroundColor = '#f8d7da'; // color rojo claro
+                inputPrecio.disabled = true;
+                inputStock.disabled = true;
+                checkControlaStock.disabled = true;
+            } else {
+                fila.style.backgroundColor = ''; // color por defecto
+                inputPrecio.disabled = false;
+                inputStock.disabled = !checkControlaStock.checked; // solo habilitar si controla_stock está marcado
+                checkControlaStock.disabled = false;
+            }
+        }
+        alternarEstadoFila(checkDisponible.checked); // aplicar estado inicial
+        //ejecutar la fucnon cada que el ususario haga clic en la casilla
+        checkDisponible.addEventListener('change', (evento) => {
+            alternarEstadoFila(evento.target.checked);
+        });
+        //se podra seguir guardando cuando no este disponible, solo se podra modificar cuando se tenga marcada la casilla de disponible
+        celdaDisponible.appendChild(checkDisponible);
         fila.appendChild(celdaDisponible);
 
         // crear boton guardar y recolectar datos
@@ -73,6 +95,13 @@ function renderizarTabla(productos) {
         btnGuardar.textContent = 'Guardar';
 
         btnGuardar.addEventListener('click', () => {
+            //validar que sean datos validos (no negativos o letras)
+            let precioValido = parseFloat(inputPrecio.value);
+            let stockValido = parseInt(inputStock.value);
+            if (precioValido < 0 || stockValido < 0 || isNaN(precioValido) || isNaN(stockValido)) {
+                alert("Por favor, ingresa valores válidos para precio y stock (no negativos).");
+                return;
+            }
             const datosActualizados = {
                 nombre: producto.nombre,
                 precio: parseFloat(inputPrecio.value),
