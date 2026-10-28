@@ -1,0 +1,20 @@
+33,OPEN,[Backend] Immutable Checkout Transactions, Expense Logging & Financial Reports API,,2026-10-23T21:14:30Z
+32,OPEN,[Frontend] Checkout & Receipt Modal, Daily Cash Cut, and Monthly Financial Charts UI,,2026-10-23T21:14:18Z
+31,OPEN,[Backend] Inventory Catalog CRUD & Stock Flags API,,2026-10-23T21:14:06Z
+30,OPEN,[Frontend] Admin Inventory Management UI (Stock vs. Non-Stock Items),,2026-10-23T21:13:49Z
+29,OPEN,[Backend] Cascade Order Release Logic (Item -> Person -> Order/Table),,2026-10-23T21:13:28Z
+28,OPEN,[Frontend] Interactive KDS Cascade Order Release Controls,,2026-10-23T21:13:13Z
+27,OPEN,[Backend] KDS Global FIFO Queue API & Priority Preparation,,2026-10-23T21:12:55Z
+26,OPEN,[Frontend] Split-Screen Real-Time Kitchen Display System (KDS) UI,,2026-10-23T21:12:28Z
+25,OPEN,[Backend] Transactional Order Creation API, Global FIFO ID & Stock Validation,,2026-10-23T21:12:00Z
+24,OPEN,[Frontend] Hierarchical POS Order Taking UI (Dine-In & Takeout),,2026-10-23T21:11:45Z
+23,OPEN,[Backend] Table Status & Active Takeout Tokens API,,2026-10-23T21:11:27Z
+22,OPEN,[Frontend] Interactive Table Status Map & Active Takeout Tokens View,,2026-10-23T21:10:54Z
+21,OPEN,[Backend] Role Authorization Middleware & Protected Routes,,2026-10-23T21:10:25Z
+20,OPEN,[Frontend] Global Navigation Bar & Role-Based Tab Visibility,,2026-10-23T21:09:25Z
+18,CLOSED,update environment configuration and docker security,,2026-10-23T18:19:48Z
+15,CLOSED,[Docs] Complete Systems Analysis and Design Documentation,,2026-10-23T02:05:53Z
+11,CLOSED,Technical task: Configuration of DockerFile and compose,,2026-10-22T02:15:41Z
+10,OPEN,[Backend] Implement Login Endpoint, Password Hashing, and Session/JWT,,2026-10-23T21:05:39Z
+9,OPEN,[Frontend] Implement Login Tab UI and Client-Side Validation,,2026-10-23T21:05:04Z
+8,CLOSED,Technical task: Initial node configuration and mvc struture,,2026-10-22T01:49:40Z
