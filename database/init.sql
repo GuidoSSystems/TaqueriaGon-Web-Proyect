@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `rol` varchar(50) NOT NULL,
   PRIMARY KEY (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -135,5 +135,5 @@ INSERT IGNORE INTO `pedidos` (`idPedido`, `idPersona`, `cantidad`, `producto`, `
 (67, 35, 1, 'Coca Vidrio 600ml', 35.00, 'Terminado');
 
 INSERT IGNORE INTO `usuarios` (`usuario`, `password`, `rol`) VALUES
-('Admin', '12345', 'Administrador'),
-('juan', '54321', 'trabajador');
+('Admin', '$2b$10$scaX3s5tBHlvmO9wuT.kxON6q/4rPsPNlZVWCUDXkY4XSJHpBJAJe', 'Administrador'),
+('juan', '$2b$10$Bv2lzqrj5.CHQVyNMJgH5OlY8.GbqcDXGD.0bl0m2yg.cCLp4xA52', 'trabajador');

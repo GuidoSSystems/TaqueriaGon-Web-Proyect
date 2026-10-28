@@ -1,0 +1,133 @@
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    padding: 32px 28px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+    text-align: center;
+    img{
+         width: 60px;
+        height: 80px;
+    }
+}
+
+.login-logo {
+    font-size: 3rem;
+    margin-bottom: 4px;
+   
+}
+
+.login-card h1 {
+    font-size: 1.5rem;
+    color: #dc2626;
+}
+
+.login-subtitle {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 4px 0 24px;
+}
+
+.field {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.field input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.field input.invalid {
+    border-color: #dc2626;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 44px;
+}
+
+.password-box button {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 6px;
+}
+
+.field-error {
+    display: block;
+    color: #dc2626;
+    font-size: 0.78rem;
+    min-height: 1em;
+    margin-top: 4px;
+}
+
+.form-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+    display: none;
+}
+
+.form-error.show {
+    display: block;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #b91c1c;
+}
+
+.btn-primary:disabled {
+    background: #fca5a5;
+    cursor: not-allowed;
+}
+
