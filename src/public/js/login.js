@@ -75,10 +75,6 @@ form.addEventListener('submit', async (e) => {
             }
             throw new Error('No pudimos iniciar sesión. Intenta de nuevo en unos minutos.');
         }
-
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('usuario', data.usuario);
-        localStorage.setItem('rol', data.rol);
         window.location.href = 'pos.html';
     } catch (err) {
         // Errores de red (TypeError) o cualquier otro mensaje técnico -> mensaje simple

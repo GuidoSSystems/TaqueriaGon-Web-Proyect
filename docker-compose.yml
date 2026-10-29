@@ -33,11 +33,10 @@ services:
       - db_data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      # Listo solo cuando init.sql ya creó las tablas (tabla usuarios)
-      test: ["CMD-SHELL", "mysql -uroot -p$$MYSQL_ROOT_PASSWORD -e 'SELECT 1 FROM taqueriadb.usuarios LIMIT 1'"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD"]
       interval: 5s
       timeout: 5s
-      retries: 30
+      retries: 20
 
 volumes:
   db_data:
