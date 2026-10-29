@@ -1,20 +1,30 @@
 import { Request, Response } from 'express';
 
 export class CocinaController {
-    public getCola = async (req: Request, res: Response) => {
+    public getCola = async (_req: Request, res: Response) => {
         try {
-            // Mocks temporales para que el frontend pueda trabajar (Issue #27)
-            // Se reemplazarán con Sequelize cuando los modelos estén listos.
-            
+            // Datos temporales de KDS alineados con el esquema oficial de BD (ordenes, personas, pedidos)
             const dineIn = [
                 {
                     idOrden: 1,
-                    tipo_servicio: 'LOCAL',
-                    mesa: 5,
-                    nivel_prioridad: 2,
-                    estado_orden: 'PENDIENTE',
+                    idMesa: 5,
+                    tipo_servicio: 'Comedor',
+                    prioridad: 2,
+                    estado: 'Pendiente',
                     personas: [
-                        { idPersona: 1, pedidos: [{ idPedido: 1, platillo: 'Taco Pastor', estado_cocina: 'PENDIENTE' }] }
+                        {
+                            idPersona: 1,
+                            nombre: 'Persona 1',
+                            pedidos: [
+                                {
+                                    idPedido: 1,
+                                    producto: 'Tacos',
+                                    variante_carne: 'Pastor',
+                                    notas_extras: 'Con todo',
+                                    estado: 'Pendiente'
+                                }
+                            ]
+                        }
                     ]
                 }
             ];
@@ -22,20 +32,33 @@ export class CocinaController {
             const takeout = [
                 {
                     idOrden: 2,
-                    tipo_servicio: 'LLEVAR',
-                    ficha: 15,
-                    nivel_prioridad: 1,
-                    estado_orden: 'PENDIENTE',
+                    idMesa: null,
+                    numero_ticket: 15,
+                    tipo_servicio: 'ParaLlevar',
+                    prioridad: 1,
+                    estado: 'Pendiente',
                     personas: [
-                        { idPersona: 2, pedidos: [{ idPedido: 2, platillo: 'Gringa', estado_cocina: 'PENDIENTE' }] }
+                        {
+                            idPersona: 2,
+                            nombre: 'Cliente Mostrador',
+                            pedidos: [
+                                {
+                                    idPedido: 2,
+                                    producto: 'Quesadillas',
+                                    variante_carne: 'Bisteck',
+                                    notas_extras: 'Sin cebolla',
+                                    estado: 'Pendiente'
+                                }
+                            ]
+                        }
                     ]
                 }
             ];
 
             return res.status(200).json({ dineIn, takeout });
         } catch (error) {
-            console.error(error);
-            return res.status(500).json({ error: 'Error al cargar la cola.' });
+            console.error('[Cocina] Error al cargar la cola:', error);
+            return res.status(500).json({ error: 'Error al cargar la cola de cocina' });
         }
     };
 }
