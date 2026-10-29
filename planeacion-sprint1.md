@@ -61,5 +61,14 @@ El sistema gestiona la concurrencia operativa con las siguientes entidades princ
 * `finanzas` (idTransaccion, tipo, monto, detalle, fecha) -> Almacena el ticket inmutable.
 * `usuarios` (usuario, password, rol)
 
-## 6. Historias de Usuario y Tareas
-Las historias de usuario, criterios de aceptación y asignación de responsables se encuentran gestionadas activamente en la pestaña de **Issues** y en el tablero **Projects** de este repositorio.
+## 6. Casos de Uso
+
+| ID | Nombre del Caso de Uso | Actor(es) | Descripción |
+| :--- | :--- | :--- | :--- |
+| CU-01 | Autenticación de usuarios | Todos | El sistema valida las credenciales y redirige según el rol (Administrador, Mesero, Cocinero). |
+| CU-02 | Gestión de mapa de mesas | Mesero / Admin | Visualización del estado de las mesas mediante código de colores (blanco, amarillo, rojo). |
+| CU-03 | Toma de pedidos (Comandas) | Mesero | Asignación de productos por persona dentro de la cuenta de una mesa específica. |
+| CU-04 | Visualización de KDS | Cocinero | Recepción de pedidos en pantalla bajo un modelo FIFO (Primeras Entradas, Primeras Salidas). |
+| CU-05 | Cobro y liberación de mesa | Cajero / Admin | Cálculo del total, procesamiento del pago, generación del ticket y reinicio del estado de la mesa. |
+| CU-06 | Gestión de inventario | Administrador | Operaciones CRUD sobre el catálogo de productos y actualización de stock. |
+| CU-07 | Registro de gastos operativos | Administrador | Captura de salidas de dinero con justificación para el cálculo de ganancias netas. |  
