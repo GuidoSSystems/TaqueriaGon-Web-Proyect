@@ -52,14 +52,28 @@ Se utilizará una arquitectura basada en **MVC (Modelo-Vista-Controlador)**:
 * **Middlewares:** Verificación de roles y seguridad.
 
 ## 5. Modelo Entidad-Relación (ER)
-El sistema gestiona la concurrencia operativa con las siguientes entidades principales:
-* `mesas` (idMesa, estado)
-* `cuentas` (idCuenta, idMesa) -> Controla el orden FIFO.
-* `personas` (idPersona, idCuenta, nombre)
-* `pedidos` (idPedido, idPersona, cantidad, producto, estado)
-* `inventario` (idProd, nombre, precio, stock, disponible)
-* `finanzas` (idTransaccion, tipo, monto, detalle, fecha) -> Almacena el ticket inmutable.
-* `usuarios` (usuario, password, rol)
+El sistema gestiona la concurrencia operativa, la trazabilidad de comandas en cocina (KDS) y el soporte dual para comedor y pedidos para llevar mediante las siguientes entidades principales y sus relaciones:
+
+* `usuarios` (`idUsuario` [PK], `usuario`, `password`, `rol`, `activo`): Gestión de accesos y roles (Administrador, Trabajador/Mesero, Cocinero).
+* `mesas` (`idMesa` [PK], `numero_mesa`, `estado` [Libre, Esperando, Atendida]): Mapeo del semáforo visual de mesas físicas.
+* `ordenes` (`idOrden` [PK], `idMesa` [FK], `idUsuario` [FK], `tipo_servicio` [Comedor, ParaLlevar], `numero_ticket`, `estado` [Pendiente, Servido, Pagado, Cancelado], `prioridad`, `fecha_creacion`): Comanda global con ID autoincremental que garantiza el orden FIFO estricto. Permite órdenes para llevar sin requerir asignación de mesa.
+* `personas` (`idPersona` [PK], `idOrden` [FK], `nombre`, `estado` [Pendiente, Completado]): Permite dividir la comanda por comensal o destinatario dentro de una misma orden.
+* `inventario` (`idProd` [PK], `nombre`, `categoria`, `precio`, `stock`, `controla_stock`, `disponible`, `tiempo_estimado_min`): Catálogo unificado de alimentos, carnes y bebidas con control selectivo de existencias.
+* `pedidos` (`idPedido` [PK], `idPersona` [FK], `idProd` [FK], `cantidad`, `producto`, `variante_carne`, `notas_extras`, `precio`, `estado` [Pendiente, Terminado]): Detalle de platos vinculados directamente a un producto del inventario, registrando variantes y modificadores.
+* `finanzas` (`idTransaccion` [PK], `idOrden` [FK], `idUsuario` [FK], `tipo` [INGRESO, GASTO], `categoria`, `monto`, `detalle`, `fecha`): Registro transaccional inmutable para cobros de comandas y captura de gastos operativos para el balance neto.
+
+### Diagrama Entidad-Relación (ER)
+
+```mermaid
+erDiagram
+    usuarios ||--o{ ordenes : "registra (idUsuario)"
+    usuarios ||--o{ finanzas : "audita (idUsuario)"
+    mesas ||--o{ ordenes : "hospeda (idMesa)"
+    ordenes ||--|{ personas : "contiene (idOrden)"
+    ordenes |o--o| finanzas : "liquida (idOrden)"
+    personas ||--|{ pedidos : "solicita (idPersona)"
+    inventario ||--o{ pedidos : "suministra (idProd)"
+```
 
 ## 6. Casos de Uso
 

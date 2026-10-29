@@ -14,6 +14,14 @@ export interface Config {
     jwtSecret: string;
 }
 
+const getEnvOrThrow = (key: string): string => {
+    const value = process.env[key];
+    if (!value) {
+        throw new Error(`[Config Error]: Missing required environment variable: ${key}`);
+    }
+    return value;
+};
+
 export const config: Config = {
     port: Number(process.env.PORT) || 3000,
     db: {
@@ -23,6 +31,5 @@ export const config: Config = {
         name: process.env.DB_NAME || 'taqueriadb',
         port: Number(process.env.DB_PORT) || 3306
     },
-    jwtSecret: process.env.JWT_SECRET || 'taqueria_gon_super_secret_key_2026'
+    jwtSecret: getEnvOrThrow('JWT_SECRET')
 };
-

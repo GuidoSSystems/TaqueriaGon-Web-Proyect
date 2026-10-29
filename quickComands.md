@@ -34,7 +34,8 @@ Welcome to the quick reference guide for the **Taquería Gon** development team.
 | `docker compose up -d` | Read the `docker-compose.yml` file and start the database and server in the background (detached mode). |
 | `docker compose up --build -d` | Force a clean rebuild of the images from scratch (mandatory if you modified the `Dockerfile` or installed new npm packages). |
 | `docker compose down` | Stop all running containers and free up your computer's ports. |
-
+| `docker compose down -v` | Stop running containers, remove networks, and delete all associated persistent data volumes. |
+| `docker compose exec backend npm test` | Execute the automated integration test suite directly inside the running `backend` container. |
 ---
 
 ##  3. Package Management (Node.js & NPM)

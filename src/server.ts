@@ -60,6 +60,10 @@ export class Server {
         });
     }
 
+    getApp(): Application {
+        return this.app;
+    }
+
     start() {
         return this.app.listen(this.port, () => {
             console.log(`[Server] Servidor corriendo en el puerto ${this.port}`);
